@@ -1,0 +1,17 @@
+{
+  "name": "@astoniq/loam",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "engines": {
+    "node": "^20.0.0",
+    "pnpm": "^8.10.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.6.6",
+    "pg": "^8.8.0",
+    "typescript": "^5.0.0"
+  }
+}

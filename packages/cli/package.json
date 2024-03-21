@@ -1,0 +1,44 @@
+{
+  "name": "@astoniq/loam-cli",
+  "type": "module",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "bin": {
+    "loam": "bin/loam.js"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "scripts": {
+
+  },
+  "engines": {
+    "node": "^20.0.0"
+  },
+  "dependencies": {
+    "@astoniq/loam-phrases": "workspace:^0.1.0",
+    "@astoniq/loam-schemas": "workspace:^0.1.0",
+    "decamelize": "^6.0.0",
+    "dotenv": "^16.0.0",
+    "got": "^14.0.0",
+    "tar": "^6.1.11",
+    "typescript": "^5.3.3",
+    "yargs": "^17.6.0",
+    "slonik": "^37.3.1",
+    "koa": "^2.15.2",
+    "koa-router": "^12.0.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.0",
+    "@types/koa": "^2.15.0",
+    "@types/koa-router": "^7.4.8",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^20.0.0",
+    "@types/semver": "^7.3.12",
+    "@types/sinon": "^17.0.0",
+    "@types/tar": "^6.1.2",
+    "@types/yargs": "^17.0.13"
+  }
+}
