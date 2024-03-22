@@ -1,7 +1,7 @@
 import en from "@/locales/en";
 import {z} from 'zod';
 import {fallback, languages, LanguageTag} from "@astoniq/loam-language-kit";
-import {BuiltInLanguageTag, Resource} from "@/types";
+import {BuiltInLanguageTag, Resources} from "@/types";
 
 export const builtInLanguages = [
     'en',
@@ -21,8 +21,6 @@ export const getDefaultLanguageTag = (languages: string): LanguageTag =>
 export const isBuiltInLanguageTag = (language: string): language is BuiltInLanguageTag =>
     builtInLanguageTagGuard.safeParse(language).success;
 
-const resource: Resource = {
+export const resources: Resources = {
     en
 };
-
-export default resource;

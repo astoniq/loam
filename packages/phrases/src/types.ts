@@ -42,4 +42,4 @@ export type LoamErrorCode = NormalizeKeyPaths<Errors>;
 export type LoamErrorI18nKey = `errors:${LoamErrorCode}`;
 
 
-export type Resource = Record<BuiltInLanguageTag, LocalePhrase>;
+export type Resources = Record<BuiltInLanguageTag, LocalePhrase>;

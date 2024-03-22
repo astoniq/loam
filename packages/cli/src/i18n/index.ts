@@ -1,4 +1,4 @@
-import resources from "@astoniq/loam-phrases";
+import {resources} from "@astoniq/loam-phrases";
 import i18next from "i18next";
 
 export default async function initI18n() {

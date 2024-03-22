@@ -15,21 +15,3 @@ export type Guard<T extends SchemaLike<string>> = ZodObject<{
     T,
     T
 >
-
-export type GeneratedSchema<
-Key extends string,
-    CreateSchema extends Partial<SchemaLike<Key>>,
-    Schema extends SchemaLike<Key>,
-    Table extends string = string,
-    TableSingular extends string = string
-> = Readonly<{
-    table: Table;
-    tableSingular: TableSingular,
-    fields: {
-        [key in Key]: string
-    }
-    filedKey: readonly Key[],
-    createGuard: Guard<CreateSchema>
-    guard: Guard<Schema>
-    updateGuard: Guard<Partial<Schema>>
-}>
