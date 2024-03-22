@@ -1,6 +1,7 @@
 import application from "./application";
+import {Errors} from "@/types";
 
-const errors = {
+const errors: Errors = {
     application,
 };
 

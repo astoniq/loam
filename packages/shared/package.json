@@ -1,5 +1,5 @@
 {
-  "name": "@astoniq/loam-phrases",
+  "name": "@astoniq/loam-shared",
   "version": "0.1.0",
   "type": "module",
   "main": "lib/index.js",
@@ -7,9 +7,18 @@
     "lib"
   ],
   "exports": {
-    "default": "./lib/index.js",
-    "types": "./lib/index.d.ts",
-    "import": "./lib/index.js"
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./universal": {
+      "import": "./lib/universal.js",
+      "types": "./lib/universal.d.ts"
+    },
+    "./esm": {
+      "import": "./lib/esm/index.js",
+      "types": "./lib/esm/index.d.ts"
+    }
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -24,13 +33,10 @@
     "node": "^20.0.0"
   },
   "dependencies": {
-    "@astoniq/essentials": "^0.1.0",
-    "@astoniq/loam-language-kit": "workspace:^0.1.0"
+    "@astoniq/essentials": "^0.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0"
-  },
-  "peerDependencies": {
-    "zod": "^3.22.4"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.3"
   }
 }

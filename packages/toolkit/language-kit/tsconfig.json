@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true,
-    "isolatedModules": true,
     "target": "esnext",
     "esModuleInterop": true,
-    "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,

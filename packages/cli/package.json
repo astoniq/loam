@@ -19,6 +19,8 @@
   "dependencies": {
     "@astoniq/loam-phrases": "workspace:^0.1.0",
     "@astoniq/loam-schemas": "workspace:^0.1.0",
+    "@astoniq/loam-shared": "workspace:^0.1.0",
+    "@astoniq/essentials": "^0.1.0",
     "decamelize": "^6.0.0",
     "dotenv": "^16.0.0",
     "got": "^14.0.0",
@@ -26,6 +28,7 @@
     "typescript": "^5.3.3",
     "yargs": "^17.6.0",
     "slonik": "^37.3.1",
+    "i18next": "^22.4.15",
     "koa": "^2.15.2",
     "koa-router": "^12.0.1",
     "zod": "^3.22.4"

@@ -22,9 +22,13 @@
     "node": "^20.0.0"
   },
   "dependencies": {
-    "@astoniq/loam-phrases": "workspace:^0.1.0"
+    "@astoniq/loam-phrases": "workspace:^0.1.0",
+    "@astoniq/loam-shared": "workspace:^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0"
+  },
+  "peerDependencies": {
+    "zod": "^3.22.4"
   }
 }

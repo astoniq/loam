@@ -1,6 +1,7 @@
 import oidc from "./oidc";
+import {Translation} from "@/types";
 
-const translation = {
+const translation: Translation = {
     oidc,
 };
 
