@@ -4,8 +4,7 @@ import i18next from 'i18next';
 import {conditional, Optional, pick} from "@astoniq/essentials";
 import {ZodError} from "zod";
 
-
-const formatZodError = ({ issues }: ZodError): string[] =>
+const formatZodError = ({issues}: ZodError): string[] =>
     issues.map((issue) => {
         const base = `Error in key path "${issue.path.map(String).join('.')}": (${issue.code}) `;
 
@@ -16,7 +15,7 @@ const formatZodError = ({ issues }: ZodError): string[] =>
         return base + issue.message;
     });
 
-export default class RequestError extends Error {
+export class RequestError extends Error {
     code: LoamErrorCode
     status: number
     expose: boolean

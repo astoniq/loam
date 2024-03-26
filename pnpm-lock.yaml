@@ -87,6 +87,9 @@ importers:
       '@types/node':
         specifier: ^20.0.0
         version: 20.11.30
+      '@types/oidc-provider':
+        specifier: ^8.0.0
+        version: 8.4.4
       '@types/semver':
         specifier: ^7.3.12
         version: 7.5.8
@@ -140,6 +143,9 @@ importers:
       '@astoniq/essentials':
         specifier: ^0.1.0
         version: 0.1.0
+      nanoid:
+        specifier: ^5.0.1
+        version: 5.0.6
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -407,6 +413,13 @@ packages:
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
+
+  /@types/oidc-provider@8.4.4:
+    resolution: {integrity: sha512-+SlmKc4qlCJLjpw6Du/8cXw18JsPEYyQwoy+xheLkiuNsCz1mPEYI/lRXLQHvfJD9TH6+2/WDTLZQ2UUJ5G4bw==}
+    dependencies:
+      '@types/koa': 2.15.0
+      '@types/node': 20.11.30
+    dev: true
 
   /@types/pg@8.11.4:
     resolution: {integrity: sha512-yw3Bwbda6vO+NvI1Ue/YKOwtl31AYvvd/e73O3V4ZkNzuGpTDndLSyc0dQRB2xrQqDePd20pEGIfqSp/GH3pRw==}

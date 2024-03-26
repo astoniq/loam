@@ -1,6 +1,6 @@
 import {LoamErrorCode} from "@astoniq/loam-phrases";
 import {assert} from "@astoniq/essentials";
-import RequestError from "@/errors/request-error";
+import {RequestError} from "@/errors";
 
 
 type AssertThatFunction = {

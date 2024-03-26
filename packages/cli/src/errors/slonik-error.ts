@@ -1,7 +1,6 @@
-import type {UpdateWhereData} from "@astoniq/loam-shared";
-import type {SchemaLike, GeneratedSchema} from "@astoniq/loam-schemas";
 import {SlonikError} from "slonik";
 import {OmitAutoSetFields} from "@/utils/sql";
+import {Entity, EntityLike, UpdateWhereData} from "@/types";
 
 export class DeletionError extends SlonikError {
     public constructor(
@@ -13,29 +12,26 @@ export class DeletionError extends SlonikError {
 }
 
 export class UpdateError<
-    Key extends string,
-    CreateSchema extends Partial<SchemaLike<Key>>,
-    Schema extends SchemaLike<Key>,
-    SetKey extends Key,
-    WhereKey extends Key,
+    T extends EntityLike<T>,
+    SetKey extends Partial<EntityLike<T>>,
+    WhereKey extends Partial<EntityLike<T>>,
 > extends SlonikError {
     public constructor(
-        public readonly schema: GeneratedSchema<Key, CreateSchema, Schema>,
+        public readonly entity: Entity<T>,
         public readonly detail: Partial<UpdateWhereData<SetKey, WhereKey>>
     ) {
-        super('Resource not found.');
+        super('Resource not found');
     }
 }
 
 export class InsertionError<
-    Key extends string,
-    CreateSchema extends Partial<SchemaLike<Key>>,
-    Schema extends SchemaLike<Key>,
+    T extends EntityLike<T>,
+    CreateEntity extends Partial<EntityLike<T>>
 > extends SlonikError {
     public constructor(
-        public readonly schema: GeneratedSchema<Key, CreateSchema, Schema>,
-        public readonly detail?: OmitAutoSetFields<CreateSchema>
+        public readonly entity: Entity<T>,
+        public readonly detail?: OmitAutoSetFields<CreateEntity>
     ) {
-        super('Create Error.');
+        super('Create Error');
     }
 }

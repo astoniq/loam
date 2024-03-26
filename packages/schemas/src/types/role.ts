@@ -4,7 +4,6 @@ export enum RoleType {
 }
 
 export type CreateRole = {
-    tenantId?: string;
     id: string;
     name: string;
     description: string;
@@ -13,7 +12,6 @@ export type CreateRole = {
 
 
 export type Role = {
-    tenantId: string;
     id: string;
     name: string;
     description: string;

@@ -22,7 +22,17 @@ export interface Errors {
         should_delete_custom_domains_first: string;
     }
     guard: {
-        invalid_input: string
+        invalid_input: string;
+    },
+    entity: {
+        invalid_input: string;
+        create_failed: string;
+        db_constraint_violated: string;
+        not_exists: string;
+        not_exists_with_id: string;
+        not_found: string;
+        relation_foreign_key_not_found: string;
+        unique_integrity_violation: string;
     }
 }
 
