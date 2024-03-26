@@ -1,6 +1,6 @@
 import type {ExtendableContext} from 'koa';
 import type Router from 'koa-router';
-import {WithAuthContext} from "@/middlewares/auth";
+import {WithAuthContext} from "@/middlewares/koa-auth";
 
 type AuthedRouterContext = WithAuthContext & ExtendableContext;
 

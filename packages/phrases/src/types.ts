@@ -21,6 +21,9 @@ export interface Errors {
         custom_domain_not_found: string;
         should_delete_custom_domains_first: string;
     }
+    guard: {
+        invalid_input: string
+    }
 }
 
 export interface Translation {
