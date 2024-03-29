@@ -1,6 +1,6 @@
 import {HttpError, Middleware} from "koa";
 import {RequestErrorBody} from "@astoniq/loam-schemas";
-import RequestError from "@/errors/request-error";
+import {RequestError} from "@/errors/request-error.js";
 
 
 export default function koaErrorHandler<StateT, ContextT, BodyT>(): Middleware<

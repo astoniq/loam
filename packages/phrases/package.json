@@ -24,7 +24,7 @@
     "node": "^20.0.0"
   },
   "dependencies": {
-    "@astoniq/essentials": "^0.1.0",
+    "@astoniq/essentials": "^0.2.1",
     "@astoniq/loam-language-kit": "workspace:^0.1.0"
   },
   "devDependencies": {

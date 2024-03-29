@@ -1,7 +1,7 @@
 import {CommonQueryMethods, IdentifierSqlToken, sql} from "slonik";
-import {Entity, EntityLike} from "@/types";
-import {buildSearchSql, SearchOptions} from "@/database/utils";
-import {countEntityGuard} from "@/guards";
+import {Entity, EntityLike} from "@/types/index.js";
+import {buildSearchSql, SearchOptions} from "@/database/utils.js";
+import {countEntityGuard} from "@/guards/index.js";
 
 export const buildGetTotalRowCountWithPool =
     <

@@ -1,8 +1,8 @@
 import {CommonQueryMethods, sql} from "slonik";
-import {convertToIdentifiers} from "@/utils/sql";
-import {resourceEntity} from "@/entities";
-import {resourceGuard} from "@/guards";
-import {buildFindAllEntitiesWithPool} from "@/database";
+import {convertToIdentifiers} from "@/utils/sql.js";
+import {resourceEntity} from "@/entities/index.js";
+import {resourceGuard} from "@/guards/index.js";
+import {buildFindAllEntitiesWithPool} from "@/database/index.js";
 
 export const createResourceQueries = (pool: CommonQueryMethods) => {
 

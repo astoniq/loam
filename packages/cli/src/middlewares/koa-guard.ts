@@ -1,11 +1,11 @@
 import {IRouterParamContext} from "koa-router";
 import {ZodType, ZodTypeDef} from "zod";
 import type {Middleware} from 'koa';
-import RequestError from "@/errors/request-error";
+import {RequestError} from "@/errors/request-error.js";
 import {Optional} from "@astoniq/essentials";
 import koaBody from 'koa-body';
-import assertThat from "@/utils/assert-that";
-import {ResponseBodyError, StatusCodeError} from "@/errors/server-error";
+import assertThat from "@/utils/assert-that.js";
+import {ResponseBodyError, StatusCodeError} from "@/errors/server-error.js";
 
 export type GuardConfig<QueryT, BodyT, ParametersT, ResponseT, FilesT> = {
     query?: ZodType<QueryT, ZodTypeDef, unknown>

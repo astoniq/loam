@@ -1,6 +1,6 @@
-import {Entity, EntityLike, Table} from "@/types";
+import {Entity, EntityLike, Table} from "@/types/index.js";
 import {sql, SqlToken} from "slonik";
-import {conditionalSql, convertToIdentifiers} from "@/utils/sql";
+import {conditionalSql, convertToIdentifiers} from "@/utils/sql.js";
 
 export type SearchOptions<T extends EntityLike<T>> = {
     fields: Array<keyof T>;

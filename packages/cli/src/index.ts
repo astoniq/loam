@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
-import server from "@/commands/server";
+import {server} from "@/commands/server/index.js";
 
 void yargs(hideBin(process.argv))
     .version(false)

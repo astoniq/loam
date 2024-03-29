@@ -2,16 +2,14 @@
   "name": "@astoniq/loam-cli",
   "type": "module",
   "version": "0.1.0",
+  "private": true,
   "main": "lib/index.js",
-  "bin": {
-    "loam": "bin/loam.js"
-  },
   "files": [
-    "bin",
     "lib"
   ],
   "scripts": {
-
+    "build": "rm -rf lib && tsc && tsc-alias",
+    "dev": "rm -rf lib && nodemon"
   },
   "engines": {
     "node": "^20.0.0"
@@ -20,7 +18,7 @@
     "@astoniq/loam-phrases": "workspace:^0.1.0",
     "@astoniq/loam-schemas": "workspace:^0.1.0",
     "@astoniq/loam-shared": "workspace:^0.1.0",
-    "@astoniq/essentials": "^0.1.0",
+    "@astoniq/essentials": "^0.2.1",
     "decamelize": "^6.0.0",
     "dotenv": "^16.0.0",
     "got": "^14.0.0",
@@ -36,6 +34,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "nodemon": "^3.1.0",
+    "tsc-alias": "^1.8.8",
     "@types/inquirer": "^9.0.0",
     "@types/oidc-provider": "^8.0.0",
     "@types/koa": "^2.15.0",

@@ -1,5 +1,5 @@
 import {CommonQueryMethods, sql} from "slonik";
-import {DeletionError} from "@/errors";
+import {DeletionError} from "@/errors/index.js";
 
 export const buildDeleteByIdWithPool =
     (pool: CommonQueryMethods, table: string) => async (id: string) => {

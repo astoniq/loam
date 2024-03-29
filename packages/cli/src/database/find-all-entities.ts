@@ -1,7 +1,7 @@
 import {CommonQueryMethods, sql} from "slonik";
-import {Entity, EntityKeys, EntityLike, Guard} from "@/types";
-import {conditionalSql, convertToIdentifiers, manyRows} from "@/utils/sql";
-import {buildSearchSql, expandFields, SearchOptions} from "@/database/utils";
+import {Entity, EntityKeys, EntityLike, Guard} from "@/types/index.js";
+import {conditionalSql, convertToIdentifiers, manyRows} from "@/utils/sql.js";
+import {buildSearchSql, expandFields, SearchOptions} from "@/database/utils.js";
 
 export const buildFindAllEntitiesWithPool =
     (pool: CommonQueryMethods) => <

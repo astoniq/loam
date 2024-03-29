@@ -5,11 +5,10 @@ import {
     convertToPrimitiveOrSql,
     excludeAutoSetFields,
     OmitAutoSetFields
-} from "@/utils/sql";
-import {Entity, EntityLike, Guard} from "@/types";
-import assertThat from "@/utils/assert-that";
-import {InsertionError} from "@/errors";
-
+} from "@/utils/sql.js";
+import {Entity, EntityLike, Guard} from "@/types/index.js";
+import assertThat from "@/utils/assert-that.js";
+import {InsertionError} from "@/errors/index.js";
 
 type OnConflict = |
     {

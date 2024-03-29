@@ -1,4 +1,4 @@
-import {Guard} from "@/types";
+import {Guard} from "@/types/index.js";
 import {CreateResource, Resource} from "@astoniq/loam-schemas";
 import {z} from 'zod';
 

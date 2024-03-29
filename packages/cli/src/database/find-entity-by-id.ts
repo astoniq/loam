@@ -1,9 +1,9 @@
 import {CommonQueryMethods, NotFoundError, sql} from "slonik";
-import {Entity, EntityLike, Guard} from "@/types";
-import {convertToIdentifiers} from "@/utils/sql";
-import {isKeyOf} from "@/utils/entity";
-import assertThat from "@/utils/assert-that";
-import {RequestError} from "@/errors";
+import {Entity, EntityLike, Guard} from "@/types/index.js";
+import {convertToIdentifiers} from "@/utils/sql.js";
+import {isKeyOf} from "@/utils/entity.js";
+import assertThat from "@/utils/assert-that.js";
+import {RequestError} from "@/errors/index.js";
 
 type WithId<T> = T & { id: string };
 

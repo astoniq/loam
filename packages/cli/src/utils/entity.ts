@@ -1,4 +1,4 @@
-import {Entity, EntityKeys, EntityLike} from "@/types";
+import {Entity, EntityKeys, EntityLike} from "@/types/index.js";
 
 export const isKeyOf =
     <T extends EntityLike<T>,

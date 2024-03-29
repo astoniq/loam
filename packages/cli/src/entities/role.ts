@@ -1,4 +1,4 @@
-import {Entity} from "@/types";
+import {Entity} from "@/types/index.js";
 import {Role} from "@astoniq/loam-schemas";
 
 export const roleEntity: Entity<Role> =

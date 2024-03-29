@@ -1,6 +1,3 @@
-import {NormalizeKeyPaths} from "@astoniq/essentials";
-import {z} from "zod";
-import {builtInLanguageTagGuard} from "@/options";
 
 export interface Errors {
     application: {
@@ -46,13 +43,3 @@ export type LocalePhrase = {
     translation: Translation
     errors: Errors
 }
-
-export type I18nKey = NormalizeKeyPaths<Translation>;
-
-export type BuiltInLanguageTag = z.infer<typeof builtInLanguageTagGuard>;
-
-export type LoamErrorCode = NormalizeKeyPaths<Errors>;
-export type LoamErrorI18nKey = `errors:${LoamErrorCode}`;
-
-
-export type Resources = Record<BuiltInLanguageTag, LocalePhrase>;

@@ -1,29 +1,27 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true,
-    "isolatedModules": true,
-    "target": "esnext",
-    "esModuleInterop": true,
-    "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "module": "nodenext",
+    "lib": [
+      "ESNext"
+    ],
+    "moduleResolution": "nodenext",
     "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "declaration": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
     "outDir": "lib",
+    "baseUrl": "./src",
+    "declaration": true,
     "types": [
       "node"
     ],
-    "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
     }
   },
   "include": [
     "src"
-  ],
+  ]
 }

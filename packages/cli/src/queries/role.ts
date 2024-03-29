@@ -1,7 +1,7 @@
 import {CommonQueryMethods, sql} from "slonik";
-import {roleEntity} from "@/entities";
-import {convertToIdentifiers} from "@/utils/sql";
-import {roleGuard} from "@/guards";
+import {roleEntity} from "@/entities/index.js";
+import {convertToIdentifiers} from "@/utils/sql.js";
+import {roleGuard} from "@/guards/index.js";
 
 export const createRoleQueries = (pool: CommonQueryMethods) => {
 

@@ -1,5 +1,5 @@
-import oidc from "./oidc";
-import {Translation} from "@/types";
+import oidc from "./oidc.js";
+import {Translation} from "@/types.js";
 
 const translation: Translation = {
     oidc,

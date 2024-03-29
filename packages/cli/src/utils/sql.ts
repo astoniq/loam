@@ -1,7 +1,7 @@
 import type {IdentifierSqlToken, QueryResult, SqlToken} from "slonik";
 import {sql} from "slonik";
 import {Falsy, notFalsy} from "@astoniq/essentials";
-import {Entity, EntityKeys, EntityLike, EntityValue, EntityValuePrimitive, Table} from "@/types";
+import {Entity, EntityKeys, EntityLike, EntityValue, EntityValuePrimitive, Table} from "@/types/index.js";
 
 export const autoSetFields = Object.freeze(['createdAt', 'updatedAt'] as const)
 

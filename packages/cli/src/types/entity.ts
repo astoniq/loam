@@ -19,7 +19,6 @@ export type UpdateWhereData<
     WhereKey extends EntityLike<WhereKey>> = {
     set: Partial<SetKey>;
     where: Partial<WhereKey>;
-    jsonbMode: 'replace' | 'merge';
 };
 
 export type Entity<T extends EntityLike<T>> = Readonly<{

@@ -1,6 +1,6 @@
 import {SlonikError} from "slonik";
-import {OmitAutoSetFields} from "@/utils/sql";
-import {Entity, EntityLike, UpdateWhereData} from "@/types";
+import {OmitAutoSetFields} from "@/utils/sql.js";
+import {Entity, EntityLike, UpdateWhereData} from "@/types/index.js";
 
 export class DeletionError extends SlonikError {
     public constructor(

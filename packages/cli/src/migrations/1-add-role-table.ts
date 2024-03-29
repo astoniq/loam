@@ -1,14 +1,12 @@
-import {MigrationScript} from "@/types";
+import {MigrationScript} from "@/types/index.js";
 import {sql} from "slonik";
 
 
 const migration: MigrationScript = {
     up: async (pool) => {
-        await pool.query(sql.unsafe`
-            create table role ();
-        `)
+        await pool.query(sql.unsafe``)
     },
-    down: async (pool) => {
+    down: async () => {
 
     }
 }

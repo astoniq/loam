@@ -1,4 +1,4 @@
-import type {IMiddleware, IRouterParamContext} from 'koa-router';
+import type {IRouterParamContext} from 'koa-router';
 
 export type KoaAuth = {
     type: 'user' | 'app';

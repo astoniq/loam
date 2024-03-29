@@ -1,5 +1,5 @@
 import type {ZodObject, ZodType, ZodOptional, ZodTypeAny} from 'zod';
-import {EntityLike} from "@/types/entity";
+import {EntityLike} from "@/types/entity.js";
 
 type ParseOptional<K> = undefined extends K
     ? ZodOptional<ZodType<Exclude<K, undefined>>>
