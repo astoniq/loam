@@ -2,13 +2,15 @@ import {CommonQueryMethods, sql} from "slonik";
 import {convertToIdentifiers} from "@/utils/sql.js";
 import {resourceEntity} from "@/entities/index.js";
 import {resourceGuard} from "@/guards/index.js";
-import {buildFindAllEntitiesWithPool} from "@/database/index.js";
+import {buildFindAllEntitiesWithPool, buildFindEntityByIdWithPool} from "@/database/index.js";
 
 export const createResourceQueries = (pool: CommonQueryMethods) => {
 
     const {table, fields} = convertToIdentifiers(resourceEntity);
 
     const findAllResources = buildFindAllEntitiesWithPool(pool)(resourceEntity, resourceGuard)
+
+    const findResourceById = buildFindEntityByIdWithPool(pool)(resourceEntity, resourceGuard)
 
     const findResourceByIds = async (resourceIds: string[]) =>
         resourceIds.length > 0
@@ -20,6 +22,7 @@ export const createResourceQueries = (pool: CommonQueryMethods) => {
             : [];
 
     return {
+        findResourceById,
         findResourceByIds,
         findAllResources
     }

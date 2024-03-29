@@ -112,8 +112,8 @@ export default function koaGuard<StateT, ContextT extends IRouterParamContext,
         }
 
         try {
-            await (body ?? files ? koaBody<StateT, ContextT>({multipart: Boolean(files)})(ctx,
-                async () => guard(ctx, next)) : guard(ctx, next))
+            await (body ?? files ? koaBody<StateT, ContextT>({multipart: Boolean(files)})
+            (ctx, async () => guard(ctx, next)) : guard(ctx, next))
         } catch (error: unknown) {
             if (error instanceof RequestError) {
                 assertStatusCode(error.status)
