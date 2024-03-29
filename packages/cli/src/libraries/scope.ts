@@ -1,7 +1,6 @@
-import {Queries} from "@/context/queries.js";
+import {Queries} from "@/application/queries.js";
 
 export const createScopeLibrary = (queries: Queries) => {
-
 
     const {
         resource: {findResourceByIds}

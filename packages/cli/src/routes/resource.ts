@@ -11,7 +11,7 @@ export default function resourceRoutes<T extends AuthedRouter>(...[router]: Rout
             params: object({id: string().min(1)}),
             status: [200, 404]
         }),
-        async (ctx, next) => {
+        async (_ctx, next) => {
 
         return next()
     })

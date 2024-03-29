@@ -1,4 +1,4 @@
-import {Queries} from "@/context/queries.js";
+import {Queries} from "@/application/queries.js";
 import {createScopeLibrary} from "@/libraries/scope.js";
 
 export type Libraries = ReturnType<typeof createLibraries>
