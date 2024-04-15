@@ -1,8 +1,8 @@
-import {MigrationScript} from "@/types/index.js";
+import {Migration} from "@/types/index.js";
 import {sql} from "slonik";
 
 
-const migration: MigrationScript = {
+export const addRoleTableMigration: Migration = {
     up: async (pool) => {
         await pool.query(sql.unsafe``)
     },
@@ -10,5 +10,3 @@ const migration: MigrationScript = {
 
     }
 }
-
-export default migration

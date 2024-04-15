@@ -1,6 +1,7 @@
-import {assertEnv, getEnv, tryThat, yes} from "@astoniq/essentials";
+import {assertEnv, getEnv, tryThat} from "@astoniq/essentials";
+import {Config} from "@/config/types.js";
 
-export const loadConfig = () => {
+export const loadConfig = (): Config => {
 
     const isProduction = getEnv('NODE_ENV') === 'production'
     const isUnitTest = getEnv('NODE_ENV') === 'test';
@@ -16,9 +17,6 @@ export const loadConfig = () => {
 
     const databasePoolSize = Number(
         getEnv('DATABASE_POOL_SIZE', '20'));
-
-    const isCaseSensitiveUsername = yes(
-        getEnv('CASE_SENSITIVE_USERNAME', 'true'));
 
     const redisUrl = getEnv('REDIS_URL');
 
@@ -36,7 +34,6 @@ export const loadConfig = () => {
         databasePoolSize,
         redisUrl,
         port,
-        endpoint,
-        isCaseSensitiveUsername
+        endpoint
     }
 }

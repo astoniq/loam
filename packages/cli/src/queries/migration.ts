@@ -1,7 +1,7 @@
-import {CommonQueryMethods, NotFoundError, sql} from "slonik";
+import {CommonQueryMethods, DatabaseTransactionConnection, NotFoundError, sql} from "slonik";
 import {convertToIdentifiers} from "@/utils/sql.js";
 import {systemEntity} from "@/entities/index.js";
-import {MigrationStateKey, systemGuard, systemGuards} from "@/guards/index.js";
+import {MigrationState, MigrationStateKey, systemGuard, systemGuards} from "@/guards/index.js";
 
 
 const {table, fields} = convertToIdentifiers(systemEntity);
@@ -25,4 +25,19 @@ export const getCurrentDatabaseMigrationTimestamp = async (pool: CommonQueryMeth
         }
         throw error;
     }
+}
+
+export const updateMigrationTimestamp = async (
+    connection: DatabaseTransactionConnection,
+    timestamp: number
+) => {
+    const value: MigrationState = {
+        timestamp
+    }
+
+    await connection.query(
+        sql.unsafe`
+        insert into ${table} (${fields.name}, ${fields.value})
+        values (${MigrationStateKey.MigrationState}, ${sql.jsonb(value)})`
+    )
 }
