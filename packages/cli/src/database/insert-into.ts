@@ -27,7 +27,7 @@ type BuildInsertInto = {
     (
         entity: Entity<T>,
         guard: EntityGuard<T>,
-        config: InsertIntoConfig):
+        config?: InsertIntoConfig):
         (data: OmitAutoSetFields<CreateEntity>) => Promise<T>;
 }
 

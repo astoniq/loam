@@ -18,7 +18,6 @@ export const logContextPayloadGuard = z
         applicationId: z.string().optional(),
         sessionId: z.string().optional()
     })
-    .catchall(z.unknown())
 
 export type PartialPasswordPolicy = DeepPartial<PasswordPolicy>;
 
