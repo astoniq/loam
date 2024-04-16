@@ -1,13 +1,16 @@
 {
-  "name": "@astoniq/loam-schemas",
+  "name": "@astoniq/loam-core-kit",
   "version": "0.1.0",
   "type": "module",
   "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib"
   ],
   "exports": {
-    ".": "./lib/index.js"
+    "default": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -21,18 +24,19 @@
   "engines": {
     "node": "^20.0.0"
   },
+  "optionalDependencies": {
+    "zod": "^3.22.4"
+  },
   "dependencies": {
-    "@astoniq/loam-phrases": "workspace:^0.1.0",
-    "@astoniq/loam-core-kit": "workspace:^0.1.0",
-    "@astoniq/loam-language-kit": "workspace:^0.1.0",
     "@astoniq/loam-shared": "workspace:^0.1.0",
-    "@astoniq/essentials": "^0.2.1"
+    "@astoniq/loam-language-kit": "workspace:^0.1.0",
+    "@astoniq/essentials": "^0.2.1",
+    "color": "^4.2.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "slonik": "^37.3.1"
-  },
-  "peerDependencies": {
-    "zod": "^3.22.4"
+    "tslib": "^2.4.1",
+    "typescript": "^5.3.3",
+    "@types/color": "^3.0.6"
   }
 }

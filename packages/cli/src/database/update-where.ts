@@ -1,4 +1,4 @@
-import {Entity, EntityLike, EntityValue, Guard, UpdateWhereData} from "@/types/index.js";
+import {Entity, EntityLike, EntityValue, EntityGuard, UpdateWhereData} from "@/types/index.js";
 import {CommonQueryMethods, sql} from "slonik";
 import {conditionalSql, convertToIdentifiers, convertToPrimitiveOrSql} from "@/utils/sql.js";
 import {isKeyOf} from "@/utils/entity.js";
@@ -8,7 +8,7 @@ import {UpdateError} from "@/errors/index.js";
 
 type BuildUpdateWhere = {
     <T extends EntityLike<T>>
-    (entity: Entity<T>, guard: Guard<T>): (data: UpdateWhereData<T, T>) => Promise<T>;
+    (entity: Entity<T>, guard: EntityGuard<T>): (data: UpdateWhereData<T, T>) => Promise<T>;
 }
 
 export const buildUpdateWhereWithPool =
@@ -16,7 +16,7 @@ export const buildUpdateWhereWithPool =
         <T extends EntityLike<T>>
         (
             entity: Entity<T>,
-            guard: Guard<T>,
+            guard: EntityGuard<T>,
         ) => {
             const {fields, table} = convertToIdentifiers(entity);
             const isKeyOfSchema = isKeyOf(entity);

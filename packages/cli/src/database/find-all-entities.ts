@@ -1,5 +1,5 @@
 import {CommonQueryMethods, sql} from "slonik";
-import {Entity, EntityKeys, EntityLike, Guard} from "@/types/index.js";
+import {Entity, EntityKeys, EntityLike, EntityGuard} from "@/types/index.js";
 import {conditionalSql, convertToIdentifiers, manyRows} from "@/utils/sql.js";
 import {buildSearchSql, expandFields, SearchOptions} from "@/database/utils.js";
 
@@ -9,7 +9,7 @@ export const buildFindAllEntitiesWithPool =
         Keys extends EntityKeys<T>,
     >(
         entity: Entity<T>,
-        guard: Guard<T>,
+        guard: EntityGuard<T>,
         orderBy?: Array<{
             field: Keys,
             order: 'asc' | 'desc'

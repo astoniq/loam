@@ -5,12 +5,12 @@ export const systemEntity: Entity<System> =
     Object.freeze({
         table: 'systems',
         fields: {
-            name: 'name',
+            key: 'key',
             value: 'value'
         },
         tableSingular: 'system',
         fieldKeys: [
-            'name',
+            'key',
             'value'
         ] as const,
     })

@@ -1,7 +1,7 @@
 import {CommonQueryMethods, DatabaseTransactionConnection, NotFoundError, sql} from "slonik";
 import {convertToIdentifiers} from "@/utils/sql.js";
 import {systemEntity} from "@/entities/index.js";
-import {MigrationState, MigrationStateKey, systemGuard, systemGuards} from "@/guards/index.js";
+import {MigrationState, MigrationStateKey, systemGuard, systemGuards} from "@astoniq/loam-schemas";
 
 
 const {table, fields} = convertToIdentifiers(systemEntity);
@@ -11,7 +11,7 @@ export const getCurrentDatabaseMigrationTimestamp = async (pool: CommonQueryMeth
         const result = await pool.one(sql.type(systemGuard)`
             select *
             from ${table}
-            where ${fields.name} = ${MigrationStateKey.MigrationState}
+            where ${fields.key} = ${MigrationStateKey.MigrationState}
         `)
 
         const parsed = systemGuards[MigrationStateKey.MigrationState]
@@ -37,7 +37,7 @@ export const updateMigrationTimestamp = async (
 
     await connection.query(
         sql.unsafe`
-        insert into ${table} (${fields.name}, ${fields.value})
+        insert into ${table} (${fields.key}, ${fields.value})
         values (${MigrationStateKey.MigrationState}, ${sql.jsonb(value)})`
     )
 }

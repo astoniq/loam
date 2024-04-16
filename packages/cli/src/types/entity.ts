@@ -1,3 +1,5 @@
+import type {ZodObject, ZodType, ZodOptional, ZodTypeAny} from 'zod';
+
 export type EntityValuePrimitive = string | number | boolean | undefined;
 export type EntityValue = EntityValuePrimitive | Record<string, unknown> | unknown[] | null;
 
@@ -27,3 +29,16 @@ export type Entity<T extends EntityLike<T>> = Readonly<{
 } & Table<T>>
 
 export type EntityKeys<T extends EntityLike<T>> = Extract<keyof T, string>
+
+type ParseOptional<K> = undefined extends K
+    ? ZodOptional<ZodType<Exclude<K, undefined>>>
+    : ZodType<K>
+
+export type EntityGuard<T extends EntityLike<T>> = ZodObject<{
+    [key in keyof T] -?: ParseOptional<T[key]>
+},
+    'strip',
+    ZodTypeAny,
+    T,
+    T
+>

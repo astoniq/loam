@@ -1,5 +1,5 @@
 import {z} from "zod";
 
-export const countEntityGuard = z.object({
+export const countGuard = z.object({
     count: z.number(),
 })

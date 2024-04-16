@@ -6,7 +6,7 @@ import {
     excludeAutoSetFields,
     OmitAutoSetFields
 } from "@/utils/sql.js";
-import {Entity, EntityLike, Guard} from "@/types/index.js";
+import {Entity, EntityLike, EntityGuard} from "@/types/index.js";
 import assertThat from "@/utils/assert-that.js";
 import {InsertionError} from "@/errors/index.js";
 
@@ -26,7 +26,7 @@ type BuildInsertInto = {
         CreateEntity extends Partial<EntityLike<T>>>
     (
         entity: Entity<T>,
-        guard: Guard<T>,
+        guard: EntityGuard<T>,
         config: InsertIntoConfig):
         (data: OmitAutoSetFields<CreateEntity>) => Promise<T>;
 }
@@ -40,7 +40,7 @@ export const buildInsertIntoWithPool =
             CreateEntity extends Partial<EntityLike<T>>>
         (
             entity: Entity<T>,
-            guard: Guard<T>,
+            guard: EntityGuard<T>,
             config?: InsertIntoConfig) => {
 
             const {fields, table} = convertToIdentifiers(entity);

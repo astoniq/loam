@@ -1,5 +1,5 @@
 import {CommonQueryMethods, NotFoundError, sql} from "slonik";
-import {Entity, EntityLike, Guard} from "@/types/index.js";
+import {Entity, EntityLike, EntityGuard} from "@/types/index.js";
 import {convertToIdentifiers} from "@/utils/sql.js";
 import {isKeyOf} from "@/utils/entity.js";
 import assertThat from "@/utils/assert-that.js";
@@ -14,7 +14,7 @@ export const buildFindEntityByIdWithPool =
             T extends EntityLike<S>
         >(
             entity: Entity<T>,
-            guard: Guard<T>
+            guard: EntityGuard<T>
         ) => {
             const {table, fields} = convertToIdentifiers(entity);
             const isKeyOfEntity = isKeyOf(entity);
@@ -50,7 +50,7 @@ export const buildFindEntitiesByIdsWithPool =
             T extends EntityLike<S>
         >(
             entity: Entity<T>,
-            guard: Guard<T>
+            guard: EntityGuard<T>
         ) => {
             const {table, fields} = convertToIdentifiers(entity)
             const isKeyOfEntity = isKeyOf(entity);
