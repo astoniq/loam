@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import {customClientMetadataGuard, oidcClientMetadataGuard, protectedAppMetadataGuard} from "@/foundations/index.js";
+import {customClientMetadataGuard, oidcClientMetadataGuard} from "@/foundations/index.js";
 import {ApplicationType} from "@/types/index.js";
 
-const createApplicationGuard = z.object({
+export const createApplicationGuard = z.object({
     id: z.string().min(1).max(21),
     name: z.string().min(1).max(256),
     secret: z.string().min(1).max(64),
@@ -10,14 +10,13 @@ const createApplicationGuard = z.object({
     type: z.nativeEnum(ApplicationType),
     oidcClientMetadata: oidcClientMetadataGuard,
     customClientMetadata: customClientMetadataGuard.optional(),
-    protectedAppMetadata: protectedAppMetadataGuard.nullable().optional(),
     isThirdParty: z.boolean().optional(),
     createdAt: z.number().optional(),
 });
 
 export type CreateApplication = z.infer<typeof createApplicationGuard>;
 
-const applicationGuard = z.object({
+export const applicationGuard = z.object({
     id: z.string().min(1).max(21),
     name: z.string().min(1).max(256),
     secret: z.string().min(1).max(64),
@@ -25,7 +24,6 @@ const applicationGuard = z.object({
     type: z.nativeEnum(ApplicationType),
     oidcClientMetadata: oidcClientMetadataGuard,
     customClientMetadata: customClientMetadataGuard,
-    protectedAppMetadata: protectedAppMetadataGuard.nullable(),
     isThirdParty: z.boolean(),
     createdAt: z.number(),
 });

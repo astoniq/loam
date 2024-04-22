@@ -1,8 +1,7 @@
 import {z} from "zod";
 import {oidcModelInstancePayloadGuard} from "@/foundations/oidc-module.js";
 
-
-const createOidcModelInstanceGuard = z.object({
+export const createOidcModelInstanceGuard = z.object({
     modelName: z.string().min(1).max(64),
     id: z.string().min(1).max(128),
     payload: oidcModelInstancePayloadGuard,
@@ -12,12 +11,19 @@ const createOidcModelInstanceGuard = z.object({
 
 export type CreateOidcModelInstance = z.infer<typeof createOidcModelInstanceGuard>;
 
-const oidcModelInstanceGuard = z.object({
+export const oidcModelInstanceGuard = z.object({
     modelName: z.string().min(1).max(64),
     id: z.string().min(1).max(128),
     payload: oidcModelInstancePayloadGuard,
     expiresAt: z.number(),
     consumedAt: z.number().nullable(),
 });
+
+export const oidcModelInstanceQueryResultGuard = oidcModelInstanceGuard.pick({
+    payload: true,
+    consumedAt: true
+})
+
+export type OidcModelInstanceQueryResult = z.infer<typeof oidcModelInstanceQueryResultGuard>;
 
 export type OidcModelInstance = z.infer<typeof oidcModelInstanceGuard>;

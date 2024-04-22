@@ -5,4 +5,3 @@ export * from './logs.js';
 export * from './json.js';
 export * from './entity.js';
 export * from './oidc-module.js';
-export * from './application.js';

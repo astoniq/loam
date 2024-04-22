@@ -1,10 +1,10 @@
 import {Entity} from "@/types/index.js";
-import {Account} from "@astoniq/loam-schemas";
+import {User} from "@astoniq/loam-schemas";
 
-export const accountEntity: Entity<Account> =
+export const userEntity: Entity<User> =
     Object.freeze({
-        table: 'accounts',
-        tableSingular: 'account',
+        table: 'users',
+        tableSingular: 'user',
         fields: {
             id: 'id',
             username: 'username',
@@ -14,7 +14,6 @@ export const accountEntity: Entity<Account> =
             passwordEncryptionMethod: 'password_encryption_method',
             name: 'name',
             avatar: 'avatar',
-            applicationId: 'application_id',
             isSuspended: 'is_suspended',
             lastSignInAt: 'last_sign_in_at',
             createdAt: 'created_at',
@@ -28,7 +27,6 @@ export const accountEntity: Entity<Account> =
             'passwordEncryptionMethod',
             'name',
             'avatar',
-            'applicationId',
             'isSuspended',
             'lastSignInAt',
             'createdAt',

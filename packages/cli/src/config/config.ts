@@ -1,7 +1,8 @@
 import {assertEnv, getEnv, tryThat} from "@astoniq/essentials";
-import {Config} from "@/config/types.js";
 
-export const loadConfig = (): Config => {
+export type Config = ReturnType<typeof loadConfig>
+
+export const loadConfig = () => {
 
     const isProduction = getEnv('NODE_ENV') === 'production'
     const isUnitTest = getEnv('NODE_ENV') === 'test';

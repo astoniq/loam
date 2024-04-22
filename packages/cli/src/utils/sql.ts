@@ -78,9 +78,8 @@ export const conditionalArraySql = <T>(value: T[],
                                        buildSql: (value: Exclude<T[], Falsy>) => SqlToken) =>
     (value.length > 0 ? buildSql(value) : sql.fragment``)
 
-export const convertToTimestamp = (time = new Date()) => {
+export const convertToTimestamp = (time = new Date()) =>
     sql.fragment`to_timestamp(${time.valueOf() / 1000})`;
-}
 
 export const manyRows = async <T>(query: Promise<QueryResult<T>>): Promise<readonly T[]> => {
     const {rows} = await query

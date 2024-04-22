@@ -18,6 +18,12 @@ type OnConflict = |
     } | { ignore: true }
 
 type InsertIntoConfig = {
+    returning?: false;
+    onConflict?: OnConflict;
+};
+
+type InsertIntoConfigReturning = {
+    returning: true;
     onConflict?: OnConflict;
 };
 
@@ -28,6 +34,13 @@ type BuildInsertInto = {
         entity: Entity<T>,
         guard: EntityGuard<T>,
         config?: InsertIntoConfig):
+        (data: OmitAutoSetFields<CreateEntity>) => Promise<void>;
+    <T extends EntityLike<T>,
+        CreateEntity extends Partial<EntityLike<T>>>
+    (
+        entity: Entity<T>,
+        guard: EntityGuard<T>,
+        config?: InsertIntoConfigReturning):
         (data: OmitAutoSetFields<CreateEntity>) => Promise<T>;
 }
 
@@ -41,24 +54,26 @@ export const buildInsertIntoWithPool =
         (
             entity: Entity<T>,
             guard: EntityGuard<T>,
-            config?: InsertIntoConfig) => {
+            config?: InsertIntoConfig | InsertIntoConfigReturning) => {
 
             const {fields, table} = convertToIdentifiers(entity);
             const keys = excludeAutoSetFields(entity);
             const onConflict = config?.onConflict;
+            const returning = Boolean(config?.returning);
 
-            return async (data: OmitAutoSetFields<CreateEntity>): Promise<T> => {
+            return async (data: OmitAutoSetFields<CreateEntity>): Promise<T | void> => {
                 const insertingKeys = keys.filter((key) => key in data)
+                const querySql = returning ? sql.type(guard) : sql.unsafe
                 const {
                     rows: [entry]
-                } = await pool.query(sql.type(guard)`
+                } = await pool.query(querySql`
                     insert into ${table} (${sql.join(insertingKeys.map((key) => fields[key]), sql.fragment`, `)})
                     values (${sql.join(insertingKeys.map((key) => convertToPrimitiveOrSql(key, data[key] ?? null)), sql.fragment`, `)})
                         ${conditionalSql(onConflict, (config) =>
                                 config.ignore ? sql.fragment`on conflict do nothing` :
                                         sql.fragment`on conflict (${sql.join(config.fields, sql.fragment`, `)}) do update
                                 set ${setExcluded(...config.setExcludedFields)}`
-                        )} ${conditionalSql(true, () => sql.fragment`returning *`)}
+                        )} ${conditionalSql(returning, () => sql.fragment`returning *`)}
                 `);
 
                 assertThat(entry, new InsertionError(entity, data));

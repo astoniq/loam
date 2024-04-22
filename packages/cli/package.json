@@ -22,6 +22,8 @@
     "pino": "^8.20.0",
     "decamelize": "^6.0.0",
     "dotenv": "^16.0.0",
+    "date-fns": "^2.29.3",
+    "snakecase-keys": "^8.0.0",
     "got": "^14.0.0",
     "tar": "^6.1.11",
     "typescript": "^5.3.3",

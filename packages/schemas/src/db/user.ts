@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {UsersPasswordEncryptionMethod} from "@/types/index.js";
 
-const createAccountGuard = z.object({
+const createUserGuard = z.object({
     id: z.string().min(1).max(12),
     username: z.string().max(128).nullable().optional(),
     primaryEmail: z.string().max(128).nullable().optional(),
@@ -10,15 +10,14 @@ const createAccountGuard = z.object({
     passwordEncryptionMethod: z.nativeEnum(UsersPasswordEncryptionMethod).nullable().optional(),
     name: z.string().max(128).nullable().optional(),
     avatar: z.string().max(2048).nullable().optional(),
-    applicationId: z.string().max(21).nullable().optional(),
     isSuspended: z.boolean().optional(),
     lastSignInAt: z.number().nullable().optional(),
     createdAt: z.number().optional(),
 });
 
-export type CreateAccount = z.infer<typeof createAccountGuard>;
+export type CreateUser = z.infer<typeof createUserGuard>;
 
-const accountGuard = z.object({
+const userGuard = z.object({
     id: z.string().min(1).max(12),
     username: z.string().max(128).nullable(),
     primaryEmail: z.string().max(128).nullable(),
@@ -27,10 +26,9 @@ const accountGuard = z.object({
     passwordEncryptionMethod: z.nativeEnum(UsersPasswordEncryptionMethod).nullable(),
     name: z.string().max(128).nullable(),
     avatar: z.string().max(2048).nullable(),
-    applicationId: z.string().max(21).nullable(),
     isSuspended: z.boolean(),
     lastSignInAt: z.number().nullable(),
     createdAt: z.number(),
 });
 
-export type Account = z.infer<typeof accountGuard>;
+export type User = z.infer<typeof userGuard>;

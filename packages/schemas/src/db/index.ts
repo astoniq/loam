@@ -5,4 +5,4 @@ export * from './log.js';
 export * from './oidc-model-instance.js';
 export * from './application.js';
 export * from './scope.js';
-export * from './account.js';
+export * from './user.js';
