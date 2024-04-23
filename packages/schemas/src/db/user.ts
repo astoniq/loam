@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {UsersPasswordEncryptionMethod} from "@/types/index.js";
 
-const createUserGuard = z.object({
+export const createUserGuard = z.object({
     id: z.string().min(1).max(12),
     username: z.string().max(128).nullable().optional(),
     primaryEmail: z.string().max(128).nullable().optional(),
@@ -17,7 +17,7 @@ const createUserGuard = z.object({
 
 export type CreateUser = z.infer<typeof createUserGuard>;
 
-const userGuard = z.object({
+export const userGuard = z.object({
     id: z.string().min(1).max(12),
     username: z.string().max(128).nullable(),
     primaryEmail: z.string().max(128).nullable(),

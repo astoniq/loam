@@ -63,7 +63,7 @@ export default function postgresAdapter(
             client_id,
             client_secret,
             client_name,
-            ...getConstantClientMetadata(type),
+            ...getConstantClientMetadata(type, config),
             ...transpileMetadata(client_id, snakecaseKeys(oidcClientMetadata), config),
             ...customClientMetadata,
             ...conditional(clientScopes && {scope: clientScopes.join(' ')})

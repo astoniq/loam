@@ -21,9 +21,18 @@ export const createResourceQueries = (pool: CommonQueryMethods) => {
             `)
             : [];
 
+    const findResourceByIndicator = async (indicator: string) => {
+        return pool.maybeOne(sql.type(resourceGuard)`
+            select ${sql.join(Object.values(fields), sql.fragment`,`)}
+            from ${table}
+            where ${fields.indicator} = ${indicator}
+        `)
+    }
+
     return {
         findResourceById,
         findResourceByIds,
-        findAllResources
+        findAllResources,
+        findResourceByIndicator
     }
 }

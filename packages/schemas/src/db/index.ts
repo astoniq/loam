@@ -6,3 +6,4 @@ export * from './oidc-model-instance.js';
 export * from './application.js';
 export * from './scope.js';
 export * from './user.js';
+export * from './user-role.js';

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const createScopeGuard = z.object({
+export const createScopeGuard = z.object({
     id: z.string().min(1).max(21),
     resourceId: z.string().min(1).max(21),
     name: z.string().min(1).max(256),
@@ -10,7 +10,7 @@ const createScopeGuard = z.object({
 
 export type CreateScope = z.infer<typeof createScopeGuard>;
 
-const scopeGuard = z.object({
+export const scopeGuard = z.object({
     id: z.string().min(1).max(21),
     resourceId: z.string().min(1).max(21),
     name: z.string().min(1).max(256),

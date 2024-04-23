@@ -6,11 +6,13 @@ export const resourceEntity: Entity<Resource> =
         table: 'resources',
         fields: {
             id: 'id',
-            name: 'name'
+            name: 'name',
+            indicator: 'indicator',
         },
         tableSingular: 'resource',
         fieldKeys: [
             'id',
-            'name'
+            'name',
+            'indicator'
         ] as const,
     })

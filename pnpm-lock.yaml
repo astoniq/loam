@@ -17,6 +17,9 @@ importers:
       '@astoniq/essentials':
         specifier: ^0.2.1
         version: 0.2.1
+      '@astoniq/loam-core-kit':
+        specifier: workspace:^0.1.0
+        version: link:../toolkit/core-kit
       '@astoniq/loam-phrases':
         specifier: workspace:^0.1.0
         version: link:../phrases
@@ -59,6 +62,9 @@ importers:
       slonik:
         specifier: ^37.3.1
         version: 37.3.1(zod@3.22.4)
+      snake-case:
+        specifier: ^4.0.0
+        version: 4.0.0
       snakecase-keys:
         specifier: ^8.0.0
         version: 8.0.0
@@ -1646,6 +1652,11 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /no-case@4.0.0:
+    resolution: {integrity: sha512-WmS3EUGw+vXHlTgiUPi3NzbZNwH6+uGX0QLGgqG+aFSJ5rkX/Ee0nuwHBJfZTfQwwR8lGO819NEIwQ7CGhkdEQ==}
+    deprecated: Use `change-case`
+    dev: false
+
   /nodemon@3.1.0:
     resolution: {integrity: sha512-xqlktYlDMCepBJd43ZQhjWwMw2obW/JRvkrLxq5RCNcuDDX1DbcPT+qT1IlIIdf+DhnWs90JpTMe+Y5KxOchvA==}
     engines: {node: '>=10'}
@@ -2175,6 +2186,13 @@ packages:
     dependencies:
       dot-case: 3.0.4
       tslib: 2.6.2
+    dev: false
+
+  /snake-case@4.0.0:
+    resolution: {integrity: sha512-slvG6efKZ3GYUUZdhPOq/lLIqutwQ4TdPViD1VKqsbf0u76U/aPRswPKjOaAS9T7fAPmRmXuN6C/nM0xsMaFLQ==}
+    deprecated: Use `change-case`
+    dependencies:
+      no-case: 4.0.0
     dev: false
 
   /snakecase-keys@8.0.0:

@@ -1,10 +1,11 @@
 import {ApplicationType, GrantType} from "@astoniq/loam-schemas";
-import {AllClientMetadata, ClientAuthMethod, SigningAlgorithm} from "oidc-provider";
+import {AllClientMetadata, ClientAuthMethod} from "oidc-provider";
 import {conditional} from "@astoniq/essentials";
+import {OidcConfig} from "@/config/index.js";
 
 export const getConstantClientMetadata = (
     type: ApplicationType,
-    jwkSigningAlg: SigningAlgorithm = 'ES384'): AllClientMetadata => {
+    config: OidcConfig): AllClientMetadata => {
 
     const getTokenEndpointAuthMethod = (): ClientAuthMethod => {
         switch (type) {
@@ -24,9 +25,9 @@ export const getConstantClientMetadata = (
                 : [GrantType.AuthorizationCode, GrantType.RefreshToken],
         token_endpoint_auth_method: getTokenEndpointAuthMethod(),
         response_types: conditional(type === ApplicationType.MachineToMachine && []),
-        authorization_signed_response_alg: jwkSigningAlg,
-        userinfo_signed_response_alg: jwkSigningAlg,
-        id_token_signed_response_alg: jwkSigningAlg,
-        introspection_signed_response_alg: jwkSigningAlg
+        authorization_signed_response_alg: config.jwkSigningAlg,
+        userinfo_signed_response_alg: config.jwkSigningAlg,
+        id_token_signed_response_alg: config.jwkSigningAlg,
+        introspection_signed_response_alg: config.jwkSigningAlg
     }
 }
