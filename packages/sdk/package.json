@@ -1,5 +1,36 @@
 {
   "name": "@astoniq/loam-sdk",
   "version": "0.1.0",
-  "type": "module"
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    "default": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "build": "rm -rf lib/ && tsc",
+    "build:test": "pnpm build",
+    "dev": "tsc --watch --preserveWatchOutput --incremental",
+    "lint": "eslint --ext .ts src",
+    "prepack": "pnpm build"
+  },
+  "engines": {
+    "node": "^20.0.0"
+  },
+  "dependencies": {
+    "@astoniq/essentials": "^0.2.1",
+    "camelcase-keys": "^7.0.1",
+    "js-base64": "^3.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tslib": "^2.4.1",
+    "typescript": "^5.3.3"
+  }
 }
