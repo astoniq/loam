@@ -9,7 +9,11 @@ import snakecaseKeys from "snakecase-keys";
 import {Libraries} from "@/application/libraries.js";
 import {userClaims} from "@astoniq/loam-core-kit";
 import {getSharedResourceServerData} from "@/oidc/resource.js";
+import {readFileSync} from 'node:fs';
+import i18next from "i18next";
+import {I18nKey} from "@astoniq/loam-phrases";
 
+const supportedSigningAlg = Object.freeze(['RS256', 'PS256', 'ES256', 'ES384', 'ES512'] as const);
 
 export default function initOidc(config: OidcConfig,
                                  queries: Queries,
@@ -24,6 +28,9 @@ export default function initOidc(config: OidcConfig,
 
     const {issuer} = config
 
+    const logoutSource = readFileSync('static/html/logout.html', 'utf-8');
+    const logoutSuccessSource = readFileSync('static/html/post-logout/index.html', 'utf-8');
+
     const oidc = new Provider(issuer.href, {
         adapter: postgresAdapter.bind(null, config, queries),
         renderError: (ctx, body, _error) => {
@@ -34,7 +41,26 @@ export default function initOidc(config: OidcConfig,
         },
         claims: userClaims,
         conformIdTokenClaims: false,
+        enabledJWA: {
+            authorizationSigningAlgValues: [...supportedSigningAlg],
+            userinfoSigningAlgValues: [...supportedSigningAlg],
+            idTokenSigningAlgValues: [...supportedSigningAlg],
+            introspectionSigningAlgValues: [...supportedSigningAlg],
+        },
         features: {
+            devInteractions: {enabled: false},
+            rpInitiatedLogout: {
+                enabled: true,
+                logoutSource: (ctx, form) => {
+                    ctx.body = logoutSource.replace('${form}', form)
+                },
+                postLogoutSuccessSource: (ctx) => {
+                    ctx.body = logoutSuccessSource.replace(
+                        '${message}',
+                        i18next.t<string, I18nKey>('oidc.logout_success')
+                    )
+                }
+            },
             resourceIndicators: {
                 enabled: true,
                 useGrantedResource: () => false,
