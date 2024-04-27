@@ -1,6 +1,10 @@
 import {z} from "zod";
-import {accountIdIdentifierGuard, identifierGuard} from "@/routes/interaction/guard.js";
-import {InteractionEvent} from "@astoniq/loam-schemas";
+import {
+    accountIdIdentifierGuard,
+    anonymousInteractionResultGuard,
+    identifierGuard
+} from "@/routes/interaction/guard.js";
+import {EmailPasswordPayload, InteractionEvent} from "@astoniq/loam-schemas";
 
 export type AccountIdIdentifier = z.infer<typeof accountIdIdentifierGuard>;
 
@@ -24,3 +28,12 @@ export type VerifiedForgotPasswordInteractionResult = {
 export type VerifiedInteractionResult =
     | VerifiedSignInInteractionResult
     | VerifiedForgotPasswordInteractionResult
+
+
+export type AnonymousInteractionResult = z.infer<typeof anonymousInteractionResultGuard>;
+
+export type PasswordIdentifierPayload = EmailPasswordPayload
+
+export type UserIdentity =
+    | { email: string }
+    | { connectorId: string, userInfo: string }

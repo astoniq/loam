@@ -1,18 +1,19 @@
 import { z } from 'zod';
-import {emailRegEx, phoneRegEx} from "@astoniq/loam-core-kit";
+import {emailRegEx} from "@astoniq/loam-core-kit";
 import {jsonObjectGuard} from "@/foundations/index.js";
+
+import type {
+    EmailVerificationCodePayload,
+} from './verification-code.js';
+import {
+    emailVerificationCodePayloadGuard,
+} from './verification-code.js';
 
 export const emailPasswordPayloadGuard = z.object({
     email: z.string().min(1),
     password: z.string().min(1),
 });
 export type EmailPasswordPayload = z.infer<typeof emailPasswordPayloadGuard>;
-
-export const phonePasswordPayloadGuard = z.object({
-    phone: z.string().min(1),
-    password: z.string().min(1),
-});
-export type PhonePasswordPayload = z.infer<typeof phonePasswordPayloadGuard>;
 
 export const socialConnectorPayloadGuard = z.object({
     connectorId: z.string(),
@@ -30,24 +31,21 @@ export const eventGuard = z.nativeEnum(InteractionEvent);
 
 export const identifierPayloadGuard = z.union([
     emailPasswordPayloadGuard,
-    phonePasswordPayloadGuard,
+    emailVerificationCodePayloadGuard,
     socialConnectorPayloadGuard,
 ]);
 
 export type IdentifierPayload =
     | EmailPasswordPayload
+    | EmailVerificationCodePayload
     | SocialConnectorPayload;
 
 export enum MissingProfile {
-    email = 'email',
-    phone = 'phone',
-    password = 'password',
-    emailOrPhone = 'emailOrPhone',
+    email = 'email'
 }
 
 export const profileGuard = z.object({
     email: z.string().regex(emailRegEx).optional(),
-    phone: z.string().regex(phoneRegEx).optional(),
     connectorId: z.string().optional(),
     password: z.string().optional(),
 });

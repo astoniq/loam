@@ -26,9 +26,7 @@ export const languageInfoGuard = z.object({
 export type LanguageInfo = z.infer<typeof languageInfoGuard>;
 
 export enum SignInIdentifier {
-    Username = 'username',
-    Email = 'email',
-    Phone = 'phone'
+    Email = 'email'
 }
 
 export const signUpGuard = z.object({
@@ -51,6 +49,10 @@ export const signInGuard = z.object({
 })
 
 export type SignIn = z.infer<typeof signInGuard>;
+
+export const connectorTargetsGuard = z.string().array();
+
+export type ConnectorTargets = z.infer<typeof connectorTargetsGuard>;
 
 export enum MfaFactor {
     TOTP = 'Totp',

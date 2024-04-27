@@ -7,6 +7,7 @@ import {createOidcModelInstanceQueries} from "@/queries/oidc-model-instance.js";
 import {createApplicationQueries} from "@/queries/application.js";
 import {createUserRoleQueries} from "@/queries/user-role.js";
 import {createScopeQueries} from "@/queries/scope.js";
+import {createSignInExperienceQueries} from "@/queries/sign-in-experience.js";
 
 export type Queries = ReturnType<typeof createQueries>
 
@@ -20,9 +21,11 @@ export const createQueries = (pool: CommonQueryMethods) => {
     const application = createApplicationQueries(pool)
     const userRole = createUserRoleQueries(pool)
     const scope = createScopeQueries(pool)
+    const signInExperience = createSignInExperienceQueries(pool)
 
     return {
         oidcModelInstance,
+        signInExperience,
         scope,
         application,
         userRole,

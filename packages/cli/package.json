@@ -22,6 +22,7 @@
     "@astoniq/essentials": "^0.2.1",
     "snake-case": "^4.0.0",
     "pino": "^8.20.0",
+    "hash-wasm": "^4.9.0",
     "decamelize": "^6.0.0",
     "dotenv": "^16.0.0",
     "date-fns": "^2.29.3",

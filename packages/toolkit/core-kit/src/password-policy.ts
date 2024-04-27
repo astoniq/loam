@@ -22,19 +22,23 @@ export const passwordPolicyGuard = z.object({
             min: z.number().int().min(1).default(8),
             max: z.number().int().min(1).default(256),
         })
-        .default({}),
+        .default({min: 8, max: 256}),
     characterTypes: z
         .object({
             min: z.number().int().min(1).max(4).optional().default(1),
         })
-        .default({}),
+        .default({min: 1}),
     rejects: z
         .object({
             repetitionAndSequence: z.boolean().default(true),
             userInfo: z.boolean().default(true),
             words: z.string().array().default([]),
         })
-        .default({}),
+        .default({
+            repetitionAndSequence: true,
+            userInfo: true,
+            words: []
+        }),
 }) satisfies z.ZodType<PasswordPolicy, z.ZodTypeDef, DeepPartial<PasswordPolicy>>;
 
 export type PasswordRejectionCode =
@@ -247,16 +251,13 @@ export class PasswordPolicyChecker {
      *
      * For multiple matches, the longest length will be returned.
      */
-    // eslint-disable-next-line complexity
     userInfoLength(password: string, userInfo: UserInfo): number {
-        const lowercased = password.toLowerCase();
+        const lowerCased = password.toLowerCase();
         const { name, username, email, phoneNumber } = userInfo;
-        // eslint-disable-next-line @silverhand/fp/no-let
         let length = 0;
 
         const updateLength = (newLength: number) => {
             if (newLength > length) {
-                // eslint-disable-next-line @silverhand/fp/no-mutation
                 length = newLength;
             }
         };
@@ -265,33 +266,33 @@ export class PasswordPolicyChecker {
             const joined = name.replaceAll(/\s+/g, '');
 
             // The original name should be the longest string, so we check it first.
-            if (lowercased.startsWith(name.toLowerCase())) {
+            if (lowerCased.startsWith(name.toLowerCase())) {
                 updateLength(name.length);
             } else {
-                if (lowercased.startsWith(joined.toLowerCase())) {
+                if (lowerCased.startsWith(joined.toLowerCase())) {
                     updateLength(joined.length);
                 }
 
                 for (const word of name.split(' ')) {
-                    if (lowercased.startsWith(word.toLowerCase())) {
+                    if (lowerCased.startsWith(word.toLowerCase())) {
                         updateLength(word.length);
                     }
                 }
             }
         }
 
-        if (username && lowercased.startsWith(username.toLowerCase())) {
+        if (username && lowerCased.startsWith(username.toLowerCase())) {
             updateLength(username.length);
         }
 
         if (email) {
             const emailPrefix = email.split('@')[0];
-            if (emailPrefix && lowercased.startsWith(emailPrefix.toLowerCase())) {
+            if (emailPrefix && lowerCased.startsWith(emailPrefix.toLowerCase())) {
                 updateLength(emailPrefix.length);
             }
         }
 
-        if (phoneNumber && lowercased.startsWith(phoneNumber)) {
+        if (phoneNumber && lowerCased.startsWith(phoneNumber)) {
             updateLength(phoneNumber.length);
         }
 
