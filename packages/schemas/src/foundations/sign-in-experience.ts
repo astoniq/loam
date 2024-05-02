@@ -56,7 +56,6 @@ export type ConnectorTargets = z.infer<typeof connectorTargetsGuard>;
 
 export enum MfaFactor {
     TOTP = 'Totp',
-    WebAuthn = 'WebAuthn',
     BackupCode = 'BackupCode'
 }
 

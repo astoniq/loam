@@ -29,7 +29,7 @@ export default function interactionRoutes<T extends AnonymousRouter>(...[router,
 
     const interactionSieRouter =
         // @ts-expect-error for good koa types
-        (router as Router<unknown, WithInteractionSieContext<WithInteractionDetailsContext<RouterContext<T>>>>)
+        (interactionRouter as Router<unknown, WithInteractionSieContext<WithInteractionDetailsContext<RouterContext<T>>>>)
             .use(
                 koaInteractionSie(queries)
             );
@@ -74,4 +74,18 @@ export default function interactionRoutes<T extends AnonymousRouter>(...[router,
             return next();
         })
 
+
+    interactionSieRouter.post(
+        `${interactionPrefix}/submit`,
+        koaGuard({
+            status: [200, 204, 400, 401, 403, 404, 422],
+            response: z
+                .object({
+                    redirectTo: z.string(),
+                })
+                .optional(),
+        }),
+        async (_ctx, _next) => {
+
+        })
 }

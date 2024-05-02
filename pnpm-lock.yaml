@@ -17,6 +17,9 @@ importers:
       '@astoniq/essentials':
         specifier: ^0.2.1
         version: 0.2.1
+      '@astoniq/loam-connector-kit':
+        specifier: workspace:^0.1.0
+        version: link:../toolkit/connector-kit
       '@astoniq/loam-core-kit':
         specifier: workspace:^0.1.0
         version: link:../toolkit/core-kit
@@ -56,6 +59,9 @@ importers:
       koa-router:
         specifier: ^12.0.1
         version: 12.0.1
+      nanoid:
+        specifier: ^5.0.1
+        version: 5.0.6
       oidc-provider:
         specifier: ^8.4.5
         version: 8.4.5
@@ -263,6 +269,29 @@ importers:
       '@types/node':
         specifier: ^20.0.0
         version: 20.11.30
+      typescript:
+        specifier: ^5.3.3
+        version: 5.4.3
+
+  packages/toolkit/connector-kit:
+    dependencies:
+      '@astoniq/essentials':
+        specifier: ^0.2.1
+        version: 0.2.1
+      '@astoniq/loam-language-kit':
+        specifier: workspace:^0.1.0
+        version: link:../language-kit
+    optionalDependencies:
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.11.30
+      tslib:
+        specifier: ^2.4.1
+        version: 2.6.2
       typescript:
         specifier: ^5.3.3
         version: 5.4.3

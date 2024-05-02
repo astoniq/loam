@@ -1,0 +1,39 @@
+{
+  "name": "@astoniq/loam-connector-kit",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    "default": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "build": "rm -rf lib/ && tsc",
+    "build:test": "pnpm build",
+    "dev": "tsc --watch --preserveWatchOutput --incremental",
+    "lint": "eslint --ext .ts src",
+    "lint:report": "pnpm lint --format json --output-file report.json",
+    "prepack": "pnpm build"
+  },
+  "engines": {
+    "node": "^20.0.0"
+  },
+  "optionalDependencies": {
+    "zod": "^3.22.4"
+  },
+  "dependencies": {
+    "@astoniq/loam-language-kit": "workspace:^0.1.0",
+    "@astoniq/essentials": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tslib": "^2.4.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -20,7 +20,7 @@ export const createUserLibrary = (queries: Queries) => {
 
     const verifyUserPassword = async (user: Nullable<User>, password: string) => {
         assertThat(user, new RequestError({code: 'session.invalid_credentials', status: 422}));
-        const {passwordEncrypted, passwordEncryptionMethod, id} = user;
+        const {passwordEncrypted, passwordEncryptionMethod} = user;
 
         assertThat(passwordEncrypted && passwordEncryptionMethod,
             new RequestError({code: 'session.invalid_credentials', status: 422}))

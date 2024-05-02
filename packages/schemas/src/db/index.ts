@@ -8,3 +8,4 @@ export * from './scope.js';
 export * from './user.js';
 export * from './user-role.js';
 export * from './sign-in-experience.js';
+export * from './passcode.js';
