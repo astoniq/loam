@@ -1,0 +1,15 @@
+{
+  "name": "@astoniq/loam-styles",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "scss"
+  ],
+  "scripts": {
+    "precommit": "lint-staged",
+    "prepack": "pnpm build"
+  },
+  "engines": {
+    "node": "^20.0.0"
+  }
+}

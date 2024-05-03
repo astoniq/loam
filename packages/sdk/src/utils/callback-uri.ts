@@ -1,6 +1,6 @@
-import {LoamError, LoamOidcError} from "@/errors/index.js";
+import {LoamError, LoamOidcError} from "../errors/index.js";
 import {conditional} from "@astoniq/essentials";
-import {QueryKey} from "@/types/index.js";
+import {QueryKey} from "../types/index.js";
 
 
 export const parseUriParameters = (uri: string) => {

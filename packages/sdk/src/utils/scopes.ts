@@ -1,4 +1,4 @@
-import {ReservedScope, UserScope} from "@/types/index.js";
+import {ReservedScope, UserScope} from "../types/index.js";
 
 export const withDefaultScopes = (originalScopes?: string[]): string => {
     const reservedScopes = Object.values(ReservedScope);

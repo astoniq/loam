@@ -25,6 +25,7 @@
     "@astoniq/loam-phrases": "workspace:^0.1.0",
     "@astoniq/loam-core-kit": "workspace:^0.1.0",
     "@astoniq/loam-language-kit": "workspace:^0.1.0",
+    "@astoniq/loam-connector-kit": "workspace:^0.1.0",
     "@astoniq/loam-shared": "workspace:^0.1.0",
     "@astoniq/essentials": "^0.2.1"
   },

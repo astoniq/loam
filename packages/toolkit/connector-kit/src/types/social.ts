@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {BaseConnector, ConnectorType} from "@/types/foundation.js";
+import {BaseConnector, ConnectorType} from "./foundation.js";
 
 const literalSchema = z.union([z.string(), z.number(), z.boolean(), z.null()]);
 

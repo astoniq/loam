@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {BaseConnector, ConnectorType} from "@/types/foundation.js";
+import {BaseConnector, ConnectorType} from "./foundation.js";
 
 export enum TemplateType {
     /** The template for sending verification code when user is signing in. */

@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {RoleType} from "@/types/index.js";
+import {RoleType} from "../types/index.js";
 
 export const createRoleGuard = z.object({
     id: z.string().min(1).max(21),

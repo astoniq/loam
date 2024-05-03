@@ -1,4 +1,4 @@
-import {QueryKey} from "@/types/index.js";
+import {QueryKey} from "../types/index.js";
 
 export type SignOutUriParameters = {
     endSessionEndpoint: string;

@@ -1,6 +1,6 @@
 import {KeysToCamelCase} from "@astoniq/essentials";
-import {Requester} from "@/types/index.js";
-import {ContentType, QueryKey, TokenGrantType} from "@/types/index.js";
+import {Requester} from "../types/index.js";
+import {ContentType, QueryKey, TokenGrantType} from "../types/index.js";
 import camelcaseKeys from 'camelcase-keys';
 
 export type FetchTokenByAuthorizationCodeParameters = {

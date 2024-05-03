@@ -1,5 +1,5 @@
-import {SocialConnector} from "@/types/social.js";
-import {EmailConnector, SmsConnector} from "@/types/passwordless.js";
+import {SocialConnector} from "./social.js";
+import {EmailConnector, SmsConnector} from "./passwordless.js";
 
 export * from './config-form.js';
 export * from './error.js';

@@ -1,4 +1,4 @@
-import {isArbitraryObject} from "@/utils/arbitrary-object.js";
+import {isArbitraryObject} from "../utils/index.js";
 
 
 const loamErrorCodes = Object.freeze({

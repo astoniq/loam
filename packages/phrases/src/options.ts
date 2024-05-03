@@ -1,4 +1,4 @@
-import en from "@/locales/en/index.js";
+import en from "./locales/en/index.js";
 import {z} from 'zod';
 import {NormalizeKeyPaths} from "@astoniq/essentials";
 import {fallback, languages, LanguageTag} from "@astoniq/loam-language-kit";

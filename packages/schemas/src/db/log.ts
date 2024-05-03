@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {logContextPayloadGuard} from "@/foundations/index.js";
+import {logContextPayloadGuard} from "../foundations/index.js";
 
 export const createLogGuard = z.object({
     id: z.string().min(1).max(21),

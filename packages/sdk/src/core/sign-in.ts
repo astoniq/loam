@@ -1,5 +1,5 @@
-import {Prompt, QueryKey} from "@/types/index.js";
-import {withDefaultScopes} from "@/utils/index.js";
+import {Prompt, QueryKey} from "../types/index.js";
+import {withDefaultScopes} from "../utils/index.js";
 
 const codeChallengeMethod = 'S256';
 const responseType = 'code';

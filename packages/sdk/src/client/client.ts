@@ -5,24 +5,24 @@ import {
     ClientStorageKey,
     InferStorageKey, Prompt,
     SignInSessionItem
-} from "@/types/index.js";
+} from "../types/index.js";
 import {
     AccessTokenClaims, decodeAccessToken, decodeIdToken, IdTokenClaims,
     isSignInSessionItem,
     normalizeConfig,
     once,
     verifyAndParseCodeFromCallbackUri
-} from "@/utils/index.js";
+} from "../utils/index.js";
 import {conditional, Nullable, trySafe} from "@astoniq/essentials";
 import {
     fetchOidcConfig,
     fetchTokenByAuthorizationCode,
     fetchTokenByRefreshToken, fetchUserInfo, generateSignInUri, generateSignOutUri,
     OidcConfigResponse, revoke, UserInfoResponse,
-} from "@/core/index.js";
-import {getDiscoveryEndpoint} from "@/utils/requester.js";
-import {LoamClientError} from "@/errors/index.js";
-import {generateCodeChallenge, generateCodeVerifier, generateState} from "@/client/generators.js";
+} from "../core/index.js";
+import {getDiscoveryEndpoint} from "../utils/index.js";
+import {LoamClientError} from "../errors/index.js";
+import {generateCodeChallenge, generateCodeVerifier, generateState} from "./generators.js";
 
 
 export type SignInOptions = {

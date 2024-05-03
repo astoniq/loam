@@ -16,10 +16,7 @@
     "declaration": true,
     "types": [
       "node"
-    ],
-    "paths": {
-      "@/*": ["*"]
-    }
+    ]
   },
   "include": [
     "src"

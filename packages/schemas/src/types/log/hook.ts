@@ -1,4 +1,4 @@
-import {HookEvent} from "@/foundations/hooks.js";
+import {HookEvent} from "../../foundations/hooks.js";
 
 export enum Type {
     TriggerHook = 'TriggerHook'

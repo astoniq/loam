@@ -1,6 +1,6 @@
-import {ClientConfig, Prompt, SignInSessionItem} from "@/types/index.js";
-import {withDefaultScopes} from "@/utils/scopes.js";
-import {isArbitraryObject} from "@/utils/arbitrary-object.js";
+import {ClientConfig, Prompt, SignInSessionItem} from "../types/index.js";
+import {withDefaultScopes} from "./scopes.js";
+import {isArbitraryObject} from "./arbitrary-object.js";
 
 
 export const normalizeConfig = (config: ClientConfig): ClientConfig => {

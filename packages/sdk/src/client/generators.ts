@@ -1,4 +1,4 @@
-import {LoamError} from "@/errors/index.js";
+import {LoamError} from "../errors/index.js";
 import {fromUint8Array} from "js-base64";
 
 /**

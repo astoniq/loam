@@ -1,6 +1,6 @@
-import {isArbitraryObject} from "@/utils/arbitrary-object.js";
+import {isArbitraryObject} from "./arbitrary-object.js";
 import {urlSafeBase64} from "@astoniq/essentials";
-import {LoamError} from "@/errors/index.js";
+import {LoamError} from "../errors/index.js";
 
 
 export type IdTokenClaims = {

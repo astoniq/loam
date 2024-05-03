@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import {customClientMetadataGuard, oidcClientMetadataGuard} from "@/foundations/index.js";
-import {ApplicationType} from "@/types/index.js";
+import {customClientMetadataGuard, oidcClientMetadataGuard} from "../foundations/index.js";
+import {ApplicationType} from "../types/index.js";
 
 export const createApplicationGuard = z.object({
     id: z.string().min(1).max(21),

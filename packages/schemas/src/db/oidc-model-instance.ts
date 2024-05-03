@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {oidcModelInstancePayloadGuard} from "@/foundations/oidc-module.js";
+import {oidcModelInstancePayloadGuard} from "../foundations/index.js";
 
 export const createOidcModelInstanceGuard = z.object({
     modelName: z.string().min(1).max(64),

@@ -1,5 +1,5 @@
-import {Prompt} from "@/types/query.js";
-import {Requester} from "@/types/requester.js";
+import {Prompt} from "./query.js";
+import {Requester} from "./requester.js";
 import {Nullable} from "@astoniq/essentials";
 
 export type ClientConfig = {

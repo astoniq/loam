@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import {emailRegEx} from "@astoniq/loam-core-kit";
-import {jsonObjectGuard, MfaFactor} from "@/foundations/index.js";
+import {jsonObjectGuard, MfaFactor} from "../foundations/index.js";
 
 import type {
     EmailVerificationCodePayload,

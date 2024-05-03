@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {UsersPasswordEncryptionMethod} from "@/types/index.js";
+import {UsersPasswordEncryptionMethod} from "../types/index.js";
 
 export const createUserGuard = z.object({
     id: z.string().min(1).max(12),

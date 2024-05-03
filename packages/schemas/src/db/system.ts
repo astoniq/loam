@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {jsonObjectGuard} from "@/foundations/index.js";
+import {jsonObjectGuard} from "../foundations/index.js";
 
 export const createSystemGuard = z.object({
     key: z.string().min(1).max(256),

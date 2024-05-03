@@ -1,5 +1,5 @@
-import {IdTokenClaims} from "@/utils/index.js";
-import {Requester} from "@/types/index.js";
+import {IdTokenClaims} from "../utils/index.js";
+import {Requester} from "../types/index.js";
 
 export type UserInfoResponse = IdTokenClaims;
 

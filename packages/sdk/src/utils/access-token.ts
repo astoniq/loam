@@ -1,4 +1,4 @@
-import {isArbitraryObject} from "@/utils/arbitrary-object.js";
+import {isArbitraryObject} from "./arbitrary-object.js";
 import {urlSafeBase64} from "@astoniq/essentials";
 
 export type AccessTokenClaims = {

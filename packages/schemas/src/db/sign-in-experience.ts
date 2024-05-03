@@ -6,8 +6,8 @@ import {
     partialPasswordPolicyGuard,
     signInGuard,
     signUpGuard
-} from "@/foundations/index.js";
-import {SignInMode} from "@/types/index.js";
+} from "../foundations/index.js";
+import {SignInMode} from "../types/index.js";
 
 export const createSignInExperienceGuard = z.object({
     id: z.string().min(1).max(21),
