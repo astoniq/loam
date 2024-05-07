@@ -13,11 +13,7 @@ const claimToUserKey: Readonly<
         keyof User
     >
 > = Object.freeze({
-    name: 'name',
-    picture: 'avatar',
-    username: 'username',
-    email: 'primaryEmail',
-    phone_number: 'primaryPhone'
+    email: 'email',
 });
 
 export const getUserClaimsData = async (

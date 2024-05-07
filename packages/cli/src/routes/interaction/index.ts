@@ -14,6 +14,7 @@ import {
 } from "./utils/sign-in-exprerience-validation.js";
 import {verifyIdentifierPayload} from "./verifications/identifier-payload-verification.js";
 import {storeInteractionResult} from "./utils/interaction.js";
+import consentRoutes from "@/routes/interaction/consent.js";
 
 export default function interactionRoutes<T extends AnonymousRouter>(...[router, application]: RouterInitArgs<T>) {
 
@@ -88,4 +89,6 @@ export default function interactionRoutes<T extends AnonymousRouter>(...[router,
         async (_ctx, _next) => {
 
         })
+
+    consentRoutes(interactionRouter, application)
 }

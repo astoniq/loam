@@ -19,7 +19,7 @@ export const createUserQueries = (pool: CommonQueryMethods) => {
         return pool.maybeOne(sql.type(userGuard)`
             select ${sql.join(Object.values(fields), sql.fragment`,`)}
             from ${table}
-            where lower(${fields.primaryEmail}) = lower(${email})
+            where lower(${fields.email}) = lower(${email})
         `)
     }
 
@@ -58,9 +58,9 @@ export const createUserQueries = (pool: CommonQueryMethods) => {
 
     const hasUserWithEmail = async (email: string, excludeUserId?: string) => {
         return pool.exists(sql.unsafe`
-            select ${fields.primaryEmail}
+            select ${fields.email}
             from ${table}
-            where lower(${fields.primaryEmail}) = lower(${email})
+            where lower(${fields.email}) = lower(${email})
                 ${conditionalSql(excludeUserId, id => sql.fragment`and ${fields.id}<>${id}`)}
         `)
     }

@@ -3,7 +3,7 @@ import {Queries} from "@/application/queries.js";
 import Provider, {errors} from "oidc-provider";
 import postgresAdapter from "@/oidc/adapter.js";
 import koaAuditLog from "@/middlewares/koa-audit-log.js";
-import {assert, tryThat} from "@astoniq/essentials";
+import {assert, trySafe, tryThat} from "@astoniq/essentials";
 import {getAcceptedUserClaims, getUserClaimsData} from "@/oidc/scope.js";
 import snakecaseKeys from "snakecase-keys";
 import {Libraries} from "@/application/libraries.js";
@@ -12,6 +12,8 @@ import {getSharedResourceServerData} from "@/oidc/resource.js";
 import {readFileSync} from 'node:fs';
 import i18next from "i18next";
 import {I18nKey} from "@astoniq/loam-phrases";
+import {experience, ExtraParamsKey, extraParamsObjectGuard} from "@astoniq/loam-schemas";
+import {buildLoginPromptUrl} from "@/oidc/utils.js";
 
 const supportedSigningAlg = Object.freeze(['RS256', 'PS256', 'ES256', 'ES384', 'ES512'] as const);
 
@@ -114,7 +116,24 @@ export default function initOidc(config: OidcConfig,
                 return client.clientAuthMethod !== 'client_secret_basic'
             },
             methods: ['S256']
-        }
+        },
+        interactions: {
+            url: (ctx, {prompt}) => {
+                const params = trySafe(() => extraParamsObjectGuard.parse(ctx.oidc.params ?? {})) ?? {};
+                switch (prompt.name) {
+                    case 'login': {
+                        return '/' + buildLoginPromptUrl(params)
+                    }
+                    case 'consent': {
+                        return '/' + experience.routes.consent
+                    }
+                    default: {
+                        throw new Error(`Prompt not supported ${prompt.name}`)
+                    }
+                }
+            }
+        },
+        extraParams: Object.values(ExtraParamsKey)
     })
 
     oidc.use(koaAuditLog(queries))
